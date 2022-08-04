@@ -1,0 +1,320 @@
+inp w            // same
+mul x 0          // same
+add x z          // same
+mod x 26         // same
+div z 1          // 1 ou 26  --> A
+add x 14         // 14, 13, 12, -10, -7, -13  --> B
+eql x w          // same
+eql x 0          // same
+mul y 0          // same
+add y 25         // same
+mul y x          // same
+add y 1          // same
+mul z y          // same
+mul y 0          // same
+add y w          // same
+add y 12         // 0, 4, 5, 6, 7, 8, 12, 14, 15  --> C
+mul y x          // same
+add z y          // same
+
+     1      2      3      4      5      6     7     8      9     10     11    12    13    14
+A = [false, false, false, false, false, true, true, false, true, false, true, true, true, true]
+B = [14   , 13   , 12   , 14   , 13   , -7  , -13 , 10   , -7  , 11   , -9  , -2  , -9  , -14 ]
+C = [12   , 6    , 4    , 5    , 0    , 4   , 15  , 14   , 6   , 14   , 8   , 5   , 14  , 4   ]
+
+z = [inp1+12, inp2+6, inp3+4, inp4+5, ]
+
+   1   0       == inp1-14      X  (diff 14)    1
+   2   inp1+12 == inp2-13      X  (diff 25)    1 2
+   3   inp2+6  == inp3-12      X  (diff 18)    1 2 3
+   4   inp3+4  == inp4-14      X  (diff 18)    1 2 3 4
+   5   inp4+5  == inp5-13      X  (diff 18)    1 2 3 4 5
+*  6   inp5    == inp6+7       OK (diff -7)    1 2 3 4
+*  7   inp4+5  == inp7+13      OK (diff -8)    1 2 3
+   8   inp3+4  == inp8-10      X  (diff 14)    1 2 3 8
+*  9   inp8+14 == inp9+7       OK (diff 7)     1 2 3
+   10  inp3+4  == inp10-11     X  (diff 15)    1 2 3 10
+*  11  inp10+14== inp11+9      OK (diff 5)     1 2 3
+*  12  inp3+4  == inp12+2      OK (diff 2)     1 2
+*  13  inp2+6  == inp13+9      OK (diff -3)    1
+*  14  inp1+12 == inp14+14     OK (diff -2)
+
+
+99799719997967 --> 21
+
+ 12345678901234
+-34198111816311
++99799212949967
+
+inp6 = inp5 - 7
+inp7 = inp4 - 8
+inp9 = inp8 + 7
+inp11 = inp10 + 5
+inp12 = inp3 + 2
+inp13 = inp2 - 3
+inp14 = inp1 - 2
+
+
+for (int i = 0; i < 14; i++) {
+    if (A[i])
+        z.pop()
+    if (z.back() != input[i] - B[i])
+        z.push(input[i] + C[i])
+}
+
+
+mod = z % 26
+if A:
+    z /= 26
+if mod + B != inp:
+    z = z * 26 + inp + C
+
+
+
+
+inp w            //
+mul x 0          //
+add x z          //
+mod x 26         //
+div z 1          //
+add x 13         //
+eql x w          //
+eql x 0          //
+mul y 0          //
+add y 25         //
+mul y x          //
+add y 1          //
+mul z y          //
+mul y 0          //
+add y w          //
+add y 6          //
+mul y x          //
+add z y          //
+
+inp w            //
+mul x 0          //
+add x z          //
+mod x 26         //
+div z 1          //
+add x 12         //
+eql x w          //
+eql x 0          //
+mul y 0          //
+add y 25         //
+mul y x          //
+add y 1          //
+mul z y          //
+mul y 0          //
+add y w          //
+add y 4          //
+mul y x          //
+add z y          //
+
+inp w            //
+mul x 0          //
+add x z          //
+mod x 26         //
+div z 1          //
+add x 14         //
+eql x w          //
+eql x 0          //
+mul y 0          //
+add y 25         //
+mul y x          //
+add y 1          //
+mul z y          //
+mul y 0          //
+add y w          //
+add y 5          //
+mul y x          //
+add z y          //
+
+inp w            //
+mul x 0          //
+add x z          //
+mod x 26         //
+div z 1          //
+add x 13         //
+eql x w          //
+eql x 0          //
+mul y 0          //
+add y 25         //
+mul y x          //
+add y 1          //
+mul z y          //
+mul y 0          //
+add y w          //
+add y 0          //
+mul y x          //
+add z y          //
+
+inp w            //
+mul x 0          //
+add x z          //
+mod x 26         //
+div z 26         //
+add x -7         //
+eql x w          //
+eql x 0          //
+mul y 0          //
+add y 25         //
+mul y x          //
+add y 1          //
+mul z y          //
+mul y 0          //
+add y w          //
+add y 4          //
+mul y x          //
+add z y          //
+
+inp w            //
+mul x 0          //
+add x z          //
+mod x 26         //
+div z 26         //
+add x -13        //
+eql x w          //
+eql x 0          //
+mul y 0          //
+add y 25         //
+mul y x          //
+add y 1          //
+mul z y          //
+mul y 0          //
+add y w          //
+add y 15         //
+mul y x          //
+add z y          //
+
+inp w            //
+mul x 0          //
+add x z          //
+mod x 26         //
+div z 1          //
+add x 10         //
+eql x w          //
+eql x 0          //
+mul y 0          //
+add y 25         //
+mul y x          //
+add y 1          //
+mul z y          //
+mul y 0          //
+add y w          //
+add y 14         //
+mul y x          //
+add z y          //
+
+inp w            //
+mul x 0          //
+add x z          //
+mod x 26         //
+div z 26         //
+add x -7         //
+eql x w          //
+eql x 0          //
+mul y 0          //
+add y 25         //
+mul y x          //
+add y 1          //
+mul z y          //
+mul y 0          //
+add y w          //
+add y 6          //
+mul y x          //
+add z y          //
+
+inp w            //
+mul x 0          //
+add x z          //
+mod x 26         //
+div z 1          //
+add x 11         //
+eql x w          //
+eql x 0          //
+mul y 0          //
+add y 25         //
+mul y x          //
+add y 1          //
+mul z y          //
+mul y 0          //
+add y w          //
+add y 14         //
+mul y x          //
+add z y          //
+
+inp w            //
+mul x 0          //
+add x z          //
+mod x 26         //
+div z 26         //
+add x -9         //
+eql x w          //
+eql x 0          //
+mul y 0          //
+add y 25         //
+mul y x          //
+add y 1          //
+mul z y          //
+mul y 0          //
+add y w          //
+add y 8          //
+mul y x          //
+add z y          //
+
+inp w            //
+mul x 0          //
+add x z          //
+mod x 26         //
+div z 26         //
+add x -2         //
+eql x w          //
+eql x 0          //
+mul y 0          //
+add y 25         //
+mul y x          //
+add y 1          //
+mul z y          //
+mul y 0          //
+add y w          //
+add y 5          //
+mul y x          //
+add z y          //
+
+inp w            //
+mul x 0          //
+add x z          //
+mod x 26         //
+div z 26         //
+add x -9         //
+eql x w          //
+eql x 0          //
+mul y 0          //
+add y 25         //
+mul y x          //
+add y 1          //
+mul z y          //
+mul y 0          //
+add y w          //
+add y 14         //
+mul y x          //
+add z y          //
+
+inp w            //
+mul x 0          //
+add x z          //
+mod x 26         //
+div z 26         //
+add x -14        //
+eql x w          //
+eql x 0          //
+mul y 0          //
+add y 25         //
+mul y x          //
+add y 1          //
+mul z y          //
+mul y 0          //
+add y w          //
+add y 4          //
+mul y x          //
+add z y          //
